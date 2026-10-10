@@ -5,7 +5,6 @@ import "dotenv/config";
 
 import fs from "fs";
 import path from "path";
-n;
 
 import { clerkMiddleware } from "@clerk/express";
 
