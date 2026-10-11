@@ -27,9 +27,9 @@ app.use(
   clerkwebhook,
 );
 
-app.use(clerkMiddleware);
+app.use(cors({ origin: frontendURL, credentials: true }));
 app.use(express.json());
-app.use(cors({ origin: frontendURL, Credential: true }));
+app.use(clerkMiddleware());
 
 app.get("/Health", (req, res) => {
   res.status(200).json({ ok: true });
