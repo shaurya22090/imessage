@@ -1,4 +1,4 @@
-import express from "express";
+import express, { application } from "express";
 import cors from "cors";
 
 import "dotenv/config";
@@ -18,6 +18,12 @@ const PORT = process.env.PORT;
 const frontendURL = process.env.Frontend_URL;
 
 const publicDir = path.join(process.cwd(), "public");
+
+app.use(
+  "/api/webhooks/clerk",
+  express.raw({ type: "application/json" }),
+  clerkwebhook,
+);
 
 app.use(clerkMiddleware);
 app.use(express.json());
