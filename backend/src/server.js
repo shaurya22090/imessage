@@ -12,6 +12,8 @@ import User from "./models/User.js";
 import { connectDb } from "./lib/db.js";
 import job from "./lib/cron.js";
 
+import clerkwebhook from "./webhooks/clerk.webhook.js";
+
 const app = express();
 
 const PORT = process.env.PORT;

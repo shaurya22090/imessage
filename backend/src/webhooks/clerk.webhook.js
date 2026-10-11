@@ -54,3 +54,5 @@ router.post("/", async (req, res) => {
     res.status(400).json({ message: "Webhook verification failed" });
   }
 });
+
+export default router;
