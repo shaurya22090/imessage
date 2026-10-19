@@ -15,8 +15,7 @@ import job from "./lib/cron.js";
 import clerkwebhook from "./webhooks/clerk.webhook.js";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
-
-const app = express();
+import { app, server } from "./lib/socket.js";
 
 const PORT = process.env.PORT;
 const frontendURL = process.env.Frontend_URL;
@@ -50,7 +49,7 @@ if (fs.existsSync(publicDir)) {
   });
 }
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectDb();
   console.log("The server is running on PORT:", PORT);
 
