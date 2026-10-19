@@ -14,6 +14,7 @@ import job from "./lib/cron.js";
 
 import clerkwebhook from "./webhooks/clerk.webhook.js";
 import authRoutes from "./routes/auth.route.js";
+import messageRoutes from "./routes/message.route.js";
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.get("/Health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/messages", messageRoutes);
 
 // if public directory exists, serve the static files
 // this is fro production build
@@ -54,5 +56,3 @@ app.listen(PORT, () => {
 
   if (process.env.NODE_ENV == "production") job.start();
 });
-
-//JUST SOME MIONR TESTS.
