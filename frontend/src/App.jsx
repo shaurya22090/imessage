@@ -20,6 +20,7 @@ function App() {
   const clearAuth = useAuthStore((state) => state.clearAuth);
   const checkAuth = useAuthStore((state) => state.checkAuth);
   const isCheckingAuth = useAuthStore((state) => state.isCheckingAuth);
+  console.log({ isLoaded, isSignedIn, isCheckingAuth });
 
   useEffect(() => {
     if (!isLoaded) return;
