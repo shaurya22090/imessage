@@ -55,10 +55,10 @@ export async function getConversationsForSidebar(req, res) {
           as: "user",
         },
       },
-      // 5. Pull that profile out of the array and make it the document.
-      { $replaceRoot: { newRoot: { $first: "$user" } } },
-      // 6. Hide the private clerkId field from the result.
+      { $unwind: "$user" },
+      { $replaceRoot: { newRoot: "$user" } },
       { $project: { clerkId: 0 } },
+      s,
     ]);
 
     res.status(200).json(conversations);
@@ -122,7 +122,7 @@ export async function sendMessages(req, res) {
 
     // it only seds the mesaage in real time if the user is online.
     if (receiverSocketId) {
-      io.on(receiverSocketId).emit("newMessage", newMessage);
+      io.to(receiverSocketId).emit("newMessage", newMessage);
     }
 
     res.status(201).json(newMessage);
