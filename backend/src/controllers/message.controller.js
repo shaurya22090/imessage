@@ -88,7 +88,7 @@ export async function getMessages(req, res) {
   }
 }
 
-export async function sendMessages(params) {
+export async function sendMessages(req, res) {
   try {
     const { text } = req.body;
     const { id: reciverId } = req.params;
