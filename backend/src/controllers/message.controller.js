@@ -1,8 +1,7 @@
 import User from "../models/User.js";
 import Message from "../models/Message_Model.js";
 import { hasImageKitConfig, uploadChatMedia } from "../lib/imagekit.js";
-import { getReceiverSocketId } from "../lib/socket.js";
-//import { getReceiverSocketId, io } from "../lib/socket.js";
+import { getReceiverSocketId, io } from "../lib/socket.js";
 
 export async function getUsresForSidebar(req, res) {
   try {
@@ -91,7 +90,7 @@ export async function getMessages(req, res) {
 export async function sendMessages(req, res) {
   try {
     const { text } = req.body;
-    const { id: reciverId } = req.params;
+    const { id: receiverId } = req.params;
     const senderId = req.user._id;
 
     let imageUrl;
@@ -111,7 +110,7 @@ export async function sendMessages(req, res) {
 
     const newMessage = new Message({
       senderId,
-      reciverId,
+      receiverId,
       text,
       image: imageUrl,
       video: videoUrl,
