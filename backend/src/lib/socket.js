@@ -4,9 +4,9 @@ import http from "http";
 
 const app = e();
 
-const server = http.createServer();
+const server = http.createServer(app);
 
-const allowedOrigin = process.env.FRONTEND_URL || "http://localhost:5173";
+const allowedOrigin = process.env.Frontend_URL || "http://localhost:5173";
 
 const io = new Server(server, { cors: { origin: [allowedOrigin] } });
 
