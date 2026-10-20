@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dict && cp -R src dist",
+    "build": "rm -rf dist && cp -R src dist",
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "db:seed": "node src/seed/user.seed.js"
